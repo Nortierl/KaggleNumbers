@@ -2,5 +2,5 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
 
-num_tree = RandomForestClassifier(n_estimators=500, max_leaf_nodes=25, n_jobs=-1, random_state=42)
+num_tree = RandomForestClassifier(n_estimators=3, max_leaf_nodes=3, n_jobs=-1, class_weight = "balanced", num_outputs =10)
 num_tree.fit(X_train, y_train)
