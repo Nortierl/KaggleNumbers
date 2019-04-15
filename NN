@@ -2,5 +2,10 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
 
-num_tree = RandomForestClassifier(n_estimators=3, max_leaf_nodes=3, n_jobs=-1, class_weight = "balanced", num_outputs =10)
-num_tree.fit(X_train, y_train)
+X, y = make_classification(n_samples=10, n_informative=2, n_redundant=2, shuffle=False)
+
+num_tree = RandomForestClassifier(n_estimators=3, max_depth=3, criterion="shape", class_weight="balanced")
+num_tree.fit(X, y)
+
+print(num_tree.feature_importances_)
+print(num_tree.predict([[0, 0, 0, 0]]))
