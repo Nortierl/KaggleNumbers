@@ -1,11 +1,28 @@
 //hello!  Neural Net here.
 from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+import matplotlib
+import matplotlib.pyplot as plt
+from sklearn.svm import SVC
 from sklearn.datasets import make_classification
+train_data_raw = pd.read_csv("C:/Users/Joshua Palmer/Documents/CS455/train.csv")
 
-X, y = make_classification(n_samples=10, n_informative=2, n_redundant=2, shuffle=False)
+train_data_raw.shape
 
-num_tree = RandomForestClassifier(n_estimators=3, max_depth=3, criterion="shape", class_weight="balanced")
-num_tree.fit(X, y)
+train_data = train_data_raw.floordiv(32)  #picture preprocess
+train_data.max()
+X_train, y_train = train_test_split(train_data_raw, test_size=0.30)  #split training
+#X, y = train_data_raw(n_samples=21000, n_features=15, random_state=0)
+num_tree = RandomForestClassifier(n_estimators=3, max_depth=3, criterion="gini", class_weight="balanced")
 
-print(num_tree.feature_importances_)
-print(num_tree.predict([[0, 0, 0, 0]]))
+#add Nuerallayers
+#plot randomforest
+#test
+
+
+plt.rcParams['axes.labelsize']=14
+plt.rcParams['xtick.labelsize']=12
+plt.rcParams['ytick.labelsize']=12
+
